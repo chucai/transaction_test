@@ -9,5 +9,15 @@ class User < ActiveRecord::Base
       end
       true
     end
+
+    def save_user_information_failed
+      User.transaction do
+        Profile.transaction do
+          user = User.create(:name => "user information save failed ")
+          Profile.create(:user_id => user.id, :address => "failed user address")
+          raise "saved failed"
+        end
+      end
+    end
   end
 end

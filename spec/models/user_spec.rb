@@ -10,4 +10,11 @@ describe User do
   it "should save user and profile" do
     User.save_user_information_success.should be_true
   end
+
+
+  it "should raise a exception" do
+    expect {
+      User.save_user_information_failed
+    }.to raise_exception
+  end
 end
