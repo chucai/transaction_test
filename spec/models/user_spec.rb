@@ -1,7 +1,13 @@
 require File.expand_path(File.join("../..", "spec_helper"), __FILE__)
 
 describe User do
-  it "should be ok" do
-    true.should be_true
+  it "should create user success" do
+    user = User.new(:name => "hexudong")
+    user.save.should be_true
+  end
+
+
+  it "should save user and profile" do
+    User.save_user_information_success.should be_true
   end
 end
